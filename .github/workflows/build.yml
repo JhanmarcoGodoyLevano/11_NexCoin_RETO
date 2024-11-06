@@ -31,31 +31,12 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build Docker image
         run: |
-          docker build -t jhanmarcogodoylevano/demo_t07_nexcoin:v1 .
-
-      - name: Get commit hash
-        id: commit_hash
-        run: |
-          COMMIT_HASH=$(git rev-parse --short HEAD)
-          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
-
-      - name: Check commit hash format
-        run: |
-          echo "Commit Hash: ${{ env.COMMIT_HASH }}"
-          if [[ ! "${{ env.COMMIT_HASH }}" =~ ^[a-f0-9]{7}$ ]]; then
-            echo "Invalid commit hash format"
-            exit 1
-          fi
-
-      - name: Tag Docker image with commit hash
-        run: |
-          docker tag jhanmarcogodoylevano/demo_t07_nexcoin:v1 jhanmarcogodoylevano/demo_t07_nexcoin:${{ env.COMMIT_HASH }}
+          docker build -t jhanmarcogodoylevano/demo_t07_nexcoin:latest .
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push jhanmarcogodoylevano/demo_t07_nexcoin:v1
-          docker push jhanmarcogodoylevano/demo_t07_nexcoin:${{ env.COMMIT_HASH }}
+          docker push jhanmarcogodoylevano/demo_t07_nexcoin:latest

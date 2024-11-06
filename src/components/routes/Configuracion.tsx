@@ -321,7 +321,7 @@ const Configuracion: React.FC = () => {
         </>
       )}
 
-      {/* Tema */}
+      {/* Tema  */}
       <div
         className={`p-6 border ${
           theme === "light"

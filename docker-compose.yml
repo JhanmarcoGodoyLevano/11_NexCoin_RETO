@@ -4,7 +4,7 @@ services:
   app:
     image: jhanmarcogodoylevano/demo_t07_nexcoin:v1
     ports:
-      - "8080:80"  # Mapea el puerto 80 del contenedor al 8080 de tu máquina local o servidor
+      - "8080:80"  # Mapea el puerto 80 del contenedor al 8080  de tu máquina local o servidor
     environment:
       - NODE_ENV=production  # Configuración del entorno de producción
       - API_TIMEOUT=5000     # Ejemplo de timeout para las solicitudes a APIs externas (ajusta según tu app)

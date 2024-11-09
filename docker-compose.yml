@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   app:
-    image: jhanmarcogodoylevano/demo_t07_nexcoin:3285037a
+    image: jhanmarcogodoylevano/demo_t07_nexcoin:6cab911a
     ports:
-      - "8080:80"  # Mapea el puerto 80 del contenedor al 8080  de tu máquina local o servidor
+      - "8080:80"  # Mapea el puerto 80 del contenedor al 8080 de tu máquina local o servidor
     environment:
       - NODE_ENV=vallegrande  # Configuración del entorno de producción
       - API_TIMEOUT=5000     # Ejemplo de timeout para las solicitudes a APIs externas (ajusta según tu app)
@@ -16,11 +16,6 @@ services:
           memory: 512M      # Limita el uso de memoria
       restart_policy:
         condition: on-failure  # Reinicia solo si falla
-    logging:
-      driver: "json-file"    # Configuración del log para depuración
-      options:
-        max-size: "10m"      # Tamaño máximo del archivo de log
-        max-file: "3"        # Número máximo de archivos de log
     networks:
       - frontend
 
